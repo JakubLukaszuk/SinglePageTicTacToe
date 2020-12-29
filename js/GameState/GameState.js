@@ -1,26 +1,32 @@
 class GameState {
-    #state = {
+    #state =
+    {
         isGameActive: false,
         currentPlayer: null,
     }
 
-    set isGameActive(isActive) {
+    set isGameActive(isActive)
+    {
         this.#state.isGameActive = isActive;
     }
 
-    set currentPlayer(player) {
+    set currentPlayer(player)
+    {
         this.#state.currentPlayer = player;
     }
 
-    get isGameActive() {
+    get isGameActive()
+    {
         return this.#state.isGameActive;
     }
 
-    get currentPlayer() {
+    get currentPlayer()
+    {
         return this.#state.currentPlayer;
     }
 
-    togglePlayer() {
+    togglePlayer = () =>
+    {
         const newPlayer = this.currentPlayer === "X" ? "O" : "X";
         this.currentPlayer = newPlayer;
     }
