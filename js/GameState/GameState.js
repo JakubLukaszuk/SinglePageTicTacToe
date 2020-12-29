@@ -20,4 +20,9 @@ class GameState {
         return this.#state.currentPlayer;
     }
 
+    togglePlayer() {
+        const newPlayer = this.currentPlayer === "X" ? "O" : "X";
+        this.currentPlayer = newPlayer;
+    }
+
 }
