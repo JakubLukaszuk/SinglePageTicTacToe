@@ -31,4 +31,10 @@ class GameState {
         this.currentPlayer = newPlayer;
     }
 
+    restartGameState = () =>
+    {
+        this.currentPlayer="X";
+        this.isGameActive = true;
+    }
+
 }

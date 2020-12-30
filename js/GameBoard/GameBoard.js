@@ -24,11 +24,11 @@ class GameBoard {
 
     init = () =>
     {
-        document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', this.handleCellClick));
+        document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', this.#handleCellClick));
     }
 
 
-    handleCellClick = (clickedCellEvent) =>
+    #handleCellClick = (clickedCellEvent) =>
     {
         const clickedCell = clickedCellEvent.target;
 
@@ -39,18 +39,18 @@ class GameBoard {
         if (this.#state.boardState[clickedCellIndex] !== "" || !this.gameState.isGameActive) {
             return;
         }
-        this.handleCellPlayed(clickedCell, clickedCellIndex);
+        this.#handleCellPlayed(clickedCell, clickedCellIndex);
     }
 
-    handleCellPlayed = (clickedCell, clickedCellIndex) =>
+    #handleCellPlayed = (clickedCell, clickedCellIndex) =>
     {
         this.#state.boardState[clickedCellIndex] = this.gameState.currentPlayer;
         clickedCell.innerHTML = this.gameState.currentPlayer;
-        this.handleResultValidation();
+        this.#handleResultValidation();
     }
 
 
-     handleResultValidation = () =>
+     #handleResultValidation = () =>
      {
         let roundWon = false;
         for (let i = 0; i <= 7; i++)
@@ -85,6 +85,17 @@ class GameBoard {
         }
             this.gameState.togglePlayer();
             this.displayMessage(MessagesEnum.playerTurn, this.gameState.currentPlayer);
+    }
+
+    restartBoard = () =>
+    {
+        this.boardState = ["", "", "", "", "", "", "", "", ""];
+        document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
+    }
+
+    set boardState(boardState)
+    {
+        return this.#state.boardState = boardState
     }
 
     get boardState()
